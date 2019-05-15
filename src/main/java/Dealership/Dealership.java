@@ -18,11 +18,6 @@ public class Dealership {
         this.customers = new ArrayList<>();
     }
 
-
-    public int amountOfMoney() {
-        return till.getMoney();
-    }
-
     public int numberOfCars() {
         return cars.size();
     }
@@ -30,4 +25,22 @@ public class Dealership {
     public void addCar(Car car){
         cars.add(car);
     }
+
+    public void removeCar(Car car){
+        cars.remove(car);
+    }
+
+    public void buyCar(Car car){
+        if (till.totalMoney() >= car.getPrice()){
+            till.removeMoney(car.getPrice());
+            addCar(car);
+        }
+    }
+
+    public void sellCar(Car car){
+        till.addMoney(car.getPrice());
+        removeCar(car);
+    }
+
+
 }

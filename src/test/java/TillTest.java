@@ -15,7 +15,7 @@ public class TillTest {
 
     @Test
     public void hasMoney(){
-        assertEquals(5000, till.getMoney());
+        assertEquals(5000, till.totalMoney());
     }
 
 

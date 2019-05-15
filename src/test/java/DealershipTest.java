@@ -21,15 +21,10 @@ public class DealershipTest {
 
     @Before
     public void before(){
-        till = new Till(5000);
-        customer = new Customer("John Doe");
+        till = new Till(50000);
+        customer = new Customer("John Doe", 5000);
         dealership = new Dealership(dealer, till);
         car = new Car(30000, "blue", Model.KUGA);
-    }
-
-    @Test
-    public void amountOfMoneyInTill(){
-        assertEquals(5000, dealership.amountOfMoney());
     }
 
     @Test
@@ -41,6 +36,21 @@ public class DealershipTest {
     public void canAddCar(){
         dealership.addCar(car);
         assertEquals(1, dealership.numberOfCars());
+    }
+
+    @Test
+    public void canBuyCar(){
+        dealership.buyCar(car);
+        assertEquals(1, dealership.numberOfCars());
+        assertEquals(20000, till.totalMoney());
+    }
+
+    @Test
+    public void canSellCar(){
+        dealership.addCar(car);
+        dealership.sellCar(car);
+        assertEquals(0, dealership.numberOfCars());
+        assertEquals(80000, till.totalMoney());
     }
 
 }
