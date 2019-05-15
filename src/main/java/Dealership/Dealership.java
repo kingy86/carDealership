@@ -6,19 +6,28 @@ import java.util.ArrayList;
 
 public class Dealership {
 
-    ArrayList<Car> car;
-    int till;
-    Customer customer;
+    ArrayList<Car> cars;
+    Till till;
+    Dealer dealer;
+    ArrayList<Customer> customers;
 
-    public Dealership.Customer getCustomer() {
-        return customer;
+    public Dealership(Dealer dealer, Till till){
+        this.till = till;
+        this.dealer = dealer;
+        this.cars = new ArrayList<>();
+        this.customers = new ArrayList<>();
     }
 
-    public int getTill() {
-        return till;
+
+    public int amountOfMoney() {
+        return till.getMoney();
     }
 
-    public ArrayList<Cars.Car> carsInStock() {
-        return car.size();
+    public int numberOfCars() {
+        return cars.size();
+    }
+
+    public void addCar(Car car){
+        cars.add(car);
     }
 }
