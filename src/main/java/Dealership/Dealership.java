@@ -1,10 +1,11 @@
 package Dealership;
 
+import Behaviours.ICarTransactions;
 import Cars.Car;
 
 import java.util.ArrayList;
 
-public class Dealership {
+public class Dealership implements ICarTransactions {
 
     ArrayList<Car> cars;
     Till till;
@@ -37,10 +38,13 @@ public class Dealership {
         }
     }
 
-    public void sellCar(Car car){
+    public void sellCar(Customer customer, Car car){
+        customer.buyCar();
         till.addMoney(car.getPrice());
         removeCar(car);
     }
+
+
 
 
 }
